@@ -1,1 +1,23 @@
 Python - Version control test
+
+git init
+	inicializa o git
+
+git add -A
+	adiciona todos os arquivos
+
+git status
+	verifica o status do git
+
+git config --global user.email "youremail@example.com
+	configura o git para comunicação com seu github
+
+git remote origin {link do repositorio no github}
+	configura o local de destino no github para salvar os arquivos
+
+git commit -m "mensagem da mudança"
+	comita o arquivo ao github com as novas alterações
+
+git push -u origin master
+	publica as alterações no github 
+depois pode ser usado somente "git push"
