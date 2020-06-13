@@ -1,23 +1,119 @@
-Python - Version control test
+Instruções básicas para uso do Git e Github
 
-git init
-	inicializa o git
+Usando o GitBash para as interações via terminal
 
-git add -A
-	adiciona todos os arquivos
+Comandos básicos:
+	git help				-> Visualização do manual do git
+	
+	git status				-> Verificação do status do repositório. Mostrará se há arquivos a serem comitados e algumas outras informações.
 
-git status
-	verifica o status do git
 
-git config --global user.email "youremail@example.com
-	configura o git para comunicação com seu github
+Adicionado e comitando arquivos:
 
-git remote origin {link do repositorio no github}
-	configura o local de destino no github para salvar os arquivos
+	git add NomeArquivo			->add o arquivo a ser comitado à Staged Area - uma área de espera antes de comitar realmente os arquivos ao git
 
-git commit -m "mensagem da mudança"
-	comita o arquivo ao github com as novas alterações
+	O git add pode ser complementado usando:
+		git add .			-> add todos os arquivos presentes no diretório
+		git add *.txt			-> add todos os arquivos do tipo designado, neste caso arquivos do tipo .txt, mas podem ser de qualquer outra extensão
 
-git push -u origin master
-	publica as alterações no github 
-depois pode ser usado somente "git push"
+	git commit -m "mensagem do usuário" 	-> comita os arquivos presentes na Staged Area ao git e acrescenta uma mensagem digitada pelo usuário ao commit.
+
+	DICA:
+		Para adicionar os arquivos e comitar diretamente em uma unica linha use:	git commit -a -m "mensagem"
+
+
+GIT IGNORE:
+	Um arquivo .gitignore serve para listar arquivos do repositório que não devem ser comitados. Para isso deve-se passar (em linha) os nomes dos arquivos a serem ignorados.
+	Para criar o arquivo, use o comando:
+						touch .gitignore
+
+Visualizando informações:
+
+	git diff				-> Mostra detalhes do que foi modificado no arquivo a ser comitado
+	
+	git diff --staged			> Mostra detalhes do que foi modificado nos arquivos que estão na Staged Area
+	
+	gitk 					-> Visualizador de informações  - Um modo mais efetivo que o git diff
+
+	git log --pretty=oneline		-> Mostra detalhadamente os códigos dos arquivos commitados
+
+
+MODIFICANDO UM COMMIT:
+	
+	git commit --amend -m "Mensagem" 	-> Edita o último commit e add as alterações feitas no arquivo
+
+RESET:
+	git reset HEAD NomeDoArquivo		-> Retira o arquivo da Staged Area
+	
+	git checkout --NomeDoArquivo		-> Retorna o arquivo à versão anterior desfazendo as modificações do mesmo
+
+	git rm NomeDoArquivo			-> Apaga o arquivo do git
+
+
+TAG's
+	
+	git tag -a NomeDaTAG -m "Mensagem"	-> Cria uma TAG para o commit, usada para controle de versões
+
+	git tag					-> Mostra todas as TAG's existentes
+
+	git checkout NomeDaTAG			-> Para trabalhar com os arquivos pertencentes a TAG requerida - usado para trabalhar com versões diferentes do mesmo arquivo
+
+	git tag -d NomeDaTAG			-> Deleta a TAG
+
+
+BRANCH's:
+
+	Branch's são ramificações para trabalhos onde é possível alterar cópias dos arquivos sem modificar o arquivo original, que estará na Branch Master.
+
+	git branch NomeDoBranch			-> Cria um novo branch copiando os arquivos da MASTER
+
+	git checkout NomeDoBranch		-> Seleciona a branch e seus arquivos para trabalho
+
+	DICA: 
+		Para criar e já acessar uma nova branch use: 		git checkout -b NomeDoBranch
+
+
+MESCLANDO ARQUIVOS ENTRE BRANCH's:
+
+	Dentro da Branch que se quer mesclar, geralmente a MASTER, podemos incerir as modificações de outra branch aos arquivos principais.
+
+	git merge NomeDaBranch			-> Mescla as funcionalidades criadas nos arquivos da branch requerida à branch atualmente em trabalho (MASTER)
+
+
+CLONANDO UM REPOSITORIO:
+
+	Para trabalhar com arquivos de um repositório compartilhado ou do GitHub precisaremos clona-lo.
+
+	git clone LinkDoRepositorio NomeEscolhido	-> após o link, podemos colocar um nome ao repositório clonado. O link pode ser criado usando uma chave ssh do repositório requerido no Github
+
+	Depois de feitas as modificações no arquivo, para envia-lo ao repositório original usamos:
+
+		git push origin master
+
+	Para atualizar nossa pasta clone com arquivos do repositório, usamos:
+
+		git pull origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
